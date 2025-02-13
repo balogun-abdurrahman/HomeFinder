@@ -1,0 +1,166 @@
+{% extends "user/layout.html" %}
+
+{% block title%} - Login {% endblock %} 
+{% block listed %} {% endblock %}
+
+{% block partners %} {% endblock %}
+
+{% block say %} {% endblock %}
+{% block ul %}
+<ul class="navbar-nav me-auto mb-2 mb-lg-0 cen">
+    <li class="nav-item rrm">
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
+    </li>
+    <li class="nav-item mrr">
+    <a class="nav-link" href="/rent/">Rent</a>
+    </li>
+    <li class="nav-item mmrr">
+    <a class="nav-link" href="/buy/">Buy</a>
+    </li>
+    <li class="nav-item mmr">
+    <a class="nav-link " href="/shortlet/">Shortlet</a>
+    </li>
+{% endblock %}
+
+{% block link %}
+<body class="body">
+<a href="/register/" class="pro btn btn-danger m-1" >
+    <h6 class="navbar-brand prof ">Register</h6>
+</a>
+{% endblock %}
+{% block carousel %}
+        <div class="row">
+            <div class="col-md-12 fully">
+                    
+                    <div class=" js1">
+                        
+                        <div class="dol">
+                            <h3 class="ded" id="lol"> Login </h3>
+                        </div>
+                        {% set message = get_flashed_messages(with_categories=True) %}
+                        {% if message %}
+                        {% for msg,cat in message %}
+                            {% if cat == "errormsg" %}
+                            <div class="alert alert-danger alat">{{ msg }}</div>
+                            {% else%}
+                            <div class="alert alert-success alat">{{ msg }}</div>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="sd22" id="register">
+                            <div class="form" >
+                                
+                                
+            
+                                <form class="in clos1" action="/login/" method="post" id="logform"> 
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <div class="clo tto">
+                                        <input type="email" name="email" class="inp email" placeholder="email address">
+                                    </div>
+                                    <div class="clo">
+                                        <input type="password" name="password" class="inp pass" placeholder="password">
+                                    </div>
+                                    
+                                    <div class="clo">
+                                        <button class="bbtn bitn">Login</button>
+                                    </div>
+                                    <div class="clo">
+                                        <a href="/register/">Don't have an account? Register</a>
+                                    </div>
+                                    
+                                </form>
+            
+            
+                                    
+            
+                                    </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    <!-- <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#loli").addClass("color")
+            $("#loli").click(function(){
+                $("#reri").removeClass("color")
+                $("#loli").addClass("color")
+
+                $(".clos2").slideToggle()
+                $(".clos1").slideDown(500)
+                $(".clos2").hide()
+            })
+            $("#reri").click(function(){
+                $("#loli").removeClass("color")
+                $("#reri").addClass("color")
+
+                $(".clos1").slideToggle()
+                $(".clos2").slideDown(500)
+                $(".clos1").hide()
+            })
+
+
+            $("#logform").submit(function(event){
+                var user = $(".email").val();
+                var pass = $(".pass").val();
+
+                if(user == "" || pass == ""){
+                    $(".alert1").show()
+                    $(".alert1").text("All fields required")
+                    $(".alert1").addClass("text-danger")
+
+                    event.preventDefault();
+                }
+
+
+                })
+            
+
+
+
+            $("#regform").submit(function(event){
+
+        
+                var fname = $(".fname").val();
+                var lname = $(".lname").val();
+                var number = $(".number").val();
+                var date = $(".date").val();
+                var select = $(".select").val();
+                var confirm = $(".confirm").val();
+                var password = $(".passi").val();
+                var emal = $(".emaile").val();
+                if((fname == "") || (lname == "") || (select == "Select User type") || (number == "") || (date == "")|| (password == "")|| (confirm == "") || (emal == "")){
+                    $(".alert2").show()
+                    $(".alert2").text("All fields required")
+                    $(".alert2").addClass("text-danger")
+
+                    event.preventDefault();
+                }
+
+
+                if((select == "Select User type")){
+                    $(".alert2").show()
+                    $(".alert2").text("Select User type")
+                    $(".alert2").addClass("text-danger")
+
+                    event.preventDefault();
+                }
+
+                if((password != confirm)){
+                    $(".alert2").show()
+                    $(".alert2").text("Passwords are not the same")
+                    $(".alert2").addClass("text-danger")
+
+                    event.preventDefault();
+                }
+            })
+
+
+                
+
+        })
+    </script> -->
+{% block footer %}
+{% endblock %}

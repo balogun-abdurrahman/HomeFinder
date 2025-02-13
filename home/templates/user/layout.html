@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeFinder {% block title %} {% endblock %}</title>
+    <link rel="shortcut icon" href="/static/pictures/favs.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/fa/css/all.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/animate.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container-fluid luid">
+        <div class="row laba">
+            <div class="col aa" >
+                <nav class="navbar navbar-expand-lg bod ">
+                    <div class="container-fluid">
+                        <i class="fa-solid fa-house mb-2 me-1 lo"></i>
+                      <h1 class="navbar-brand loc">HomeFinder</h1>
+                      <button class="navbar-toggler ropo navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon iloz"></span>
+                      </button>
+                      <div class="collapse navbar-collapse smm" id="navbarSupportedContent">
+                        {% block ul %}
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 cen">
+                          <li class="nav-item rrm">
+                            <a class="nav-link active" aria-current="page" href="/home/">Home</a>
+                          </li>
+                          <li class="nav-item mrr">
+                            <a class="nav-link" href="/rent/">Rent</a>
+                          </li>
+                          <li class="nav-item mmrr">
+                            <a class="nav-link" href="/buy/">Buy</a>
+                          </li>
+                          <li class="nav-item mmr">
+                            <a class="nav-link " href="/shortlet/">Shortlet</a>
+                          </li>
+                          {% endblock %}
+                         
+                          
+                        </ul>
+                        
+                        {% block link %}
+                        <a href="/profile/{{ids}}/" class="pro btn  m-1" >
+                            <i class="fa-solid fa-user did"></i>
+                            <h6 class="navbar-brand prof ">Profile</h6>
+                        </a>
+                        {% endblock %}
+                        
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+        {% block carousel %}
+        <div class="row dis">
+            <div class="col sf">
+
+                <div id="carouselExampleSlidesOnly" class="carousel slide " data-bs-ride="carousel">
+                   
+                    <div class="carousel-inner ">
+                      <div class="carousel-item active">
+                        <img src="/static/pictures/gal-9.jpeg" class="d-block wid" alt="...">
+                        <div class="carousel-caption d-none d-md-block mab animate__animated animate__fadeIn sow">
+                            <h2 class="cls">Your Journey to the perfect Home starts Here</h2>
+                          <!-- <input type="text" class="form-control mt-3  " placeholder="Property, Location, State, Country">
+                          <button class="btn realto col-6 mt-3" type="submit">Search</button> -->
+
+                          <form action="/search/" class="col-md-12 nm" method="get">
+                            <div class="ref col-md-12">
+                                <select name="state" id="" class="form-select for fir">
+                                    <option value="select state">Select a State</option>
+        
+                                    {% for s in state %}
+                                        <option value="{{s.state_name}}">{{s.state_name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <select name="type" id=""class="form-select tty">
+                                    <option value="select type">Property Type</option>
+                                    {% for p in prop %}
+                                        <option value="{{p.property_name}}">{{p.property_name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <button class="btn searc  for far">Search</button>
+                            </div>
+                        </form>
+
+                  
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="/static/pictures/gal-8.jpeg" class="d-block wid" alt="...">
+                        <div class="carousel-caption d-none d-md-block mab animate__animated animate__fadeIn sow">
+                            <h2 class="cls">Your Journey to the perfect Home starts Here</h2>
+                            <form action="/search/" class="col-md-12" method="get">
+                                <div class="ref col-md-12">
+                                    <select name="state" id="" class="form-select for fir">
+                                        <option value="select state">Select a State</option>
+            
+                                        {% for s in state %}
+                                            <option value="{{s.state_name}}">{{s.state_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="type" id=""class="form-select tty">
+                                        <option value="select type">Property Type</option>
+                                        {% for p in prop %}
+                                            <option value="{{p.property_name}}">{{p.property_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button class="btn searc  for far">Search</button>
+                                </div>
+                            </form>
+                  
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="/static/pictures/gal-2.jpeg" class="d-block wid" alt="...">
+                        <div class="carousel-caption d-none d-md-block mab animate__animated animate__fadeIn sow">
+                            <h2 class="cls">Your Journey to the perfect Home starts Here</h2>
+                            <form action="/search/" class="col-md-12" method="get">
+                                <div class="ref col-md-12">
+                                    <select name="state" id="" class="form-select for fir">
+                                        <option value="select state">Select a State</option>
+            
+                                        {% for s in state %}
+                                            <option value="{{s.state_name}}">{{s.state_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select name="type" id=""class="form-select tty">
+                                        <option value="select type">Property Type</option>
+                                        {% for p in prop %}
+                                            <option value="{{p.property_name}}">{{p.property_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button class="btn searc  for far">Search</button>
+                                </div>
+                            </form>
+                  
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+            </div>
+           
+        </div>
+        {% endblock %}
+        {% block partners %}
+        <div class="row rad" >
+            <div class="col-md-12 rec">
+                <h1>Real Estate Partners </h1>
+            </div>
+        </div>
+        <div class="row mt-4 mb-4 bf">
+            <div class="col-md-3 boj">
+                <img src="/static/pictures/a4.jpg" class="nin" alt="">
+            </div>
+            <div class="col-md-3 boj">
+                <img src="/static/pictures/a1.jpg" class="nin" alt="">
+            </div>
+            <div class="col-md-3 boj">
+                <img src="/static/pictures/a2.webp" class="nin" alt="">
+            </div>
+             <div class="col-md-3 boj">
+                <img src="/static/pictures/a3.jpg" class="nin" alt="">
+            </div>
+            <div class="col-md-3 boj">
+                <img src="/static/pictures/a4.jpg" class="nin" alt="">
+            </div> 
+            <div class="col-md-3 boj">
+                <img src="/static/pictures/a1.jpg" class="nin" alt="">
+            </div>
+            
+            
+        </div>
+        <div class="row mt-4 mb-4 bf">
+          
+        </div>
+        {% endblock %}
+
+        {% block say %}
+        <div class="row pooc ms-1">
+            <div class="row bacd p-5">
+                <div class="col-md-12 text-center pepo">
+                    <h2 class="pepp">What People Say</h2>
+                </div>
+                <div class="col-md-3 rev">
+                <i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i>
+                    <p class="pd">I had a wonderful experience renting a house through HomeFinder. The process was simple and efficient. The house was beautiful and well-maintained.</p>
+                    <p><strong>Mark Ednut</strong></p>
+                    <img src="/static/pictures/pp4.jpg" class="por" alt="">
+                </div>
+                <div class="col-md-3 rev">
+                    <i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-regular fa-star rstar"></i>
+                    <p class="pd">They were professional and helped me find the perfect home for me and my family. The house was in great condition and located in a convenient location.</p>
+                    <p><strong>Shabab. R</strong></p>
+                    <img src="/static/pictures/pp3.jpg" class="por" alt="">
+                </div>
+                <div class="col-md-3 rev">
+                    <i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i><i class="fa-solid fa-star star"></i>
+                    <p class="pd">The staff assisted me throughout the entire process of renting a house. The property that I rented was clean, modern, and conveniently located.</p>
+                    <p><strong>Alex Bell</strong></p>
+
+                    <img src="/static/pictures/pp4.jpg" class="por" alt="">
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block listed %}
+        <div class="row rad" >
+            <div class="col-md-12 rec">
+                <h1 class="tyin">Recently Added Properties </h1>
+            </div>
+       
+
+
+        <div class="row mid p-3 potp">
+
+            {% if liss %}
+                    {% for l in liss %}
+                        
+                    <div class="col-md-4 lis">
+                        <div class="card l5" style="width: 100%;">
+                            <img src="/static/uploads/{{l.property_cover_picture}}" class="card-img-top im" alt="...">
+                            <div class="card-body ">
+                            <p>{{l.title}}</p>
+                            <h5 class="card-title"><a href="/info/{{l.property_id}}/{{l.user_id}}/" class="non">{{l.description}}</a> </h5>
+                            <div class="bodi">
+                                <div class="sid">
+                                <span> {{l.bedroom_number}} </span><i class="fa-solid fa-bed"></i> 
+                                </div>
+                                <div class="sid">
+                                    <span> {{l.bathroom_number}} </span><i class="fa-solid fa-toilet"></i>
+                                </div>
+                                <div class="sed">
+                                    <span> {{l.parking_space}} </span><i class="fa-solid fa-car"></i>
+                                </div>
+                                
+                            </div>
+                            <p>Price: <strong>&#8358;{{l.property_price}}</strong></p>
+                            <div class="cal">
+                                <a href="/owner/{{l.property_id}}/{{l.user_id}}/" class="non col-12"><button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button></a>
+                            
+                            </div>
+                            </div>
+                        </div>
+                    </div> 
+                {% endfor %}
+
+            {% else %}
+                  <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%;">
+                    <img src="/static/pictures/gal-7.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="/demo_prop/" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                                <span> 2 </span><i class="fa-solid fa-bed"></i> 
+                             </div>
+                             <div class="sid">
+                                <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                             </div>
+                             <div class="sed">
+                                <span> 1 </span><i class="fa-solid fa-car"></i> 
+                             </div>
+                        </div>
+                        <p>Price: <strong>&#8358;1,200,000</strong></p>
+                        <div class="cal">
+                            <a href="/demo_prop/" class="non col-12"><button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button></a>
+
+                         
+                             
+                         </div>
+                      </div>
+                  </div>
+            </div>
+
+
+            <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%;">
+                    <img src="/static/pictures/gal-8.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="/demo_prop/" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                                <span> 2 </span><i class="fa-solid fa-bed"></i> 
+                             </div>
+                             <div class="sid">
+                                <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                             </div>
+                             <div class="sed">
+                                <span> 1 </span><i class="fa-solid fa-car"></i> 
+                             </div>
+                        </div>
+                        <p>Price: <strong>&#8358;1,200,000</strong></p>
+                        <div class="cal">
+                            <a href="/demo_prop/" class="non col-12"><button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button></a>
+
+                         
+                             
+                         </div>
+                      </div>
+                  </div>
+            </div>
+
+            <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%;">
+                    <img src="/static/pictures/house-1.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="/demo_prop/" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                                <span > 2 </span><i class="fa-solid fa-bed"></i> 
+                             </div>
+                             <div class="sid">
+                                <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                             </div>
+                             <div class="sed">
+                                <span> 1 </span><i class="fa-solid fa-car"></i> 
+                             </div>
+                        </div>
+                        <p>Price: <strong>&#8358;1,200,000</strong></p>
+                        <div class="cal">
+                            <a href="/demo_prop/" class="non col-12"><button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button></a>
+
+                        
+                            
+                        </div>
+                        
+                      </div>
+                  </div>
+            </div>  
+            {% endif %}
+
+            
+
+
+            
+
+            
+
+            
+        </div>
+        {% endblock %}
+
+        {% block sale %}
+        {% endblock %}
+
+        {% block profile %}
+        {% endblock %}
+
+        {% block modal %}
+        {% endblock %}
+
+        {% block owner %}
+        {% endblock %}
+        
+{% block footer %}
+         <!-- <div class="row p-0 me-0 fort">
+            <div class="col-md-12 foot d-flex">
+
+                <div class="col-md-3 dorb d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 cen">
+                        <li class="nav-item ">
+                          <a class="nav-link lococ" href="/home/">Home</a>
+                        </li>
+                        <li class="nav-item ">
+                          <a class="nav-link lococ" href="/rent/">Rent</a>
+                        </li>
+                       
+                        
+                      </ul>
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0 cen">
+                        <li class="nav-item ">
+                            <a class="nav-link lococ" href="/buy/">Buy</a>
+                          </li>
+                          <li class="nav-item lococ">
+                            <a class="nav-link lococ" href="/shortlet/">Shortlet</a>
+                          </li>
+                      </ul>
+                </div>
+                <div class="col-md-9  d-flex  dorb">
+                    <div class="col-md-6 bobbi ">
+                        <h3 class="">Subscribe to our Newsletter</h3>
+                        <form action="">
+                        <input type="email" class="form-control inp2 rofm">
+                        <button class="bbtn bitn bbb">Submit</button>
+                    </form>
+                    </div>
+
+                    <div class=" col-md-5 d-flex borbb">
+                        <ul class="lii">
+                            <li class="lli mb-3">Facebook</li>
+                            <li class="lli">Twitter</li>
+                         
+                        </ul>
+                        <ul class="lii ">
+                            <li class="lli mb-3">Instagram</li>
+                            <li class="lli">Threads</li>
+                        </ul>
+                           
+                    </div>
+                </div>
+                
+            </div>
+
+        </div> -->
+         <div class="row fort laba">
+            <div class="col-md-4 d-flex">
+                <ul class="navbar-nav me-auto mt-5 mb-lg-0 cen">
+                    <li class="nav-item ">
+                      <a class="nav-link lococ" href="/home/">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link lococ" href="/rent/">Rent</a>
+                    </li>
+                   
+                    
+                  </ul>
+                  <ul class="navbar-nav me-auto mt-5 mb-lg-0 cen">
+                    <li class="nav-item ">
+                        <a class="nav-link lococ" href="/buy/">Buy</a>
+                      </li>
+                      <li class="nav-item lococ">
+                        <a class="nav-link lococ" href="/shortlet/">Shortlet</a>
+                      </li>
+                  </ul>
+            </div>
+            <div class="col-md-4">
+                <h3 class="">Subscribe to our Newsletter</h3>
+                <form action="" class="mb-3">
+                    <input type="email" class="form-control inp2 rofm">
+                    <button class="bbtn bitn bbb">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-4 d-flex">
+                <ul class="lii mt-5">
+                    <li class="lli mb-3">Facebook</li>
+                    <li class="lli">Twitter</li>
+                 
+                </ul>
+                <ul class="lii mt-5">
+                    <li class="lli mb-3">Instagram</li>
+                    <li class="lli">Threads</li>
+                </ul>
+            </div>
+
+            <!-- <div class="col-md-12 foot d-flex">
+
+                <div class="col-md-3 dorb d-flex">
+                    
+
+                </div>
+
+                <div class="col-md-9  d-flex  dorb">
+                    <div class="col-md-6 bobbi ">
+                        
+                    </div>
+
+                    <div class=" col-md-5 d-flex borbb">
+                        
+                           
+                    </div>
+                </div>
+                
+            </div> -->
+
+        </div>
+        <div class="row vasl">
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+                    Abdurrahman Balogun &copy 2025
+                </p>
+            </div>
+        </div>
+{% endblock %}
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+       
+        
+
+
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeFinder - admin</title>
+    <link rel="stylesheet" href="/static/fa/css/all.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/animate.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .sdbr{
+            height: 100%;
+            width: 6%;
+            background-color: #101d2c;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            transition: all 0.4s ease;
+            overflow-x: hidden;
+        }
+        .tabil{
+            margin-left: 6%;
+            width: 90% !important;
+        }
+        .sdbr:hover{
+            width: 20%;
+            background-color: rgba(3, 3, 32, 0.9);
+        }
+        .topee{
+            display: flex;
+            width: 270px;
+            height: 60px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .topee:hover{
+            background-color: #101d2c;
+        }
+        .oli{
+            /* margin-top: 5px;
+            margin-left: 10px; */
+            height: 40px;
+            width: 40px;
+            padding: 10px;
+            margin-left: 12px;
+            margin-top: 1px;
+            background-color: #c69963;
+        }
+        .vk{
+            color: #c69963;
+            margin-left: 15px;
+        }
+        /* div{
+            border: 1px solid red;
+        } */
+        .under{
+            /* border: 1px solid forestgreen; */
+            height: 80vh;
+        }
+        .colol{
+            color: white;
+        }
+        .bv{
+            border-bottom: 5px solid #c69963;
+        }
+        .fob{
+            width: 260px;
+            border-bottom: 5px solid #54421f;
+        }
+       
+        /* .lo{
+            width: 50px !important;
+        } */
+    </style>
+</head>
+<body class="body">
+    <div class="container-fluid">
+        <div class="row sdbr">
+            <div class="col ">
+                <div class="fob">
+                    <div class="topee bv mt-3 ">
+                        <i class="fa-solid fa-house mb-2 me-1 lo oli"></i>
+                        <h2 class="vk  text-center">HomeFinder</h2>
+                    </div>
+                </div>
+                <div class="topee mt-5">
+                    <i class="fa-solid fa-house mb-2 me-1 lo oli"></i>
+                    <h2 class="vk colol text-center"><a href="/admin/">Dashboard</a></h2>
+                </div>
+            <div class="col topee mt-3">
+                <i class="fa-solid fa-user did lo oli"></i>
+                <h2 class="vk colol text-center">User Profile</h2>
+            </div>
+            <div class="col topee mt-3">
+                <i class="fa fa-sign-out mb-2 me-1 lo oli"></i>
+                <a href="/logout_admin/" class="pro btn btn-danger m-1 lkji" >
+                    <h6 class="navbar-brand prof ">Logout</h6>
+                </a>
+            </div>
+            <!-- <div class="col topee mt-3">
+                <i class="fa-solid fa-house  mb-2 me-1 lo oli"></i>
+                <h2 class="vk colol text-center">Listings</h2>
+            </div> -->
+            </div>
+            
+            
+        </div>
+        <div class="row tabil">
+
+            <div class="row rad" >
+                <div class="col-md-12 rec2">
+                    <h1>User Table </h1>
+                </div>
+            </div>
+
+            <table class="table table-striped table-hover mb-5 mt-5 ">
+                <tr class="">
+                  <th>ID</th>
+                  <th>Fname</th>
+                  <th>Lname</th>
+                  <th>Type</th>
+                  <th>CREATED ON</th>
+                  <th>Last Logged in</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                  <th>Profile</th>
+                  
+                </tr>
+                {% for post in result %}
+                  <tr>
+                    <td>{{post.user_id}}</td>
+                    <td>{{post.user_firstname}}</td>
+                    <td>{{post.user_lastname}}</td>
+                    <td>{{post.user_type}}</td>
+                    <td>{{post.created_on.strftime('%b %d, %Y')}}</td>
+                    <td>{{post.last_login.strftime('%b %d, %Y - %I:%M:%S %p')}}</td>
+                    <td>{{post.user_status}}</td>
+                    
+                    
+                    <td>
+                        <form action="/admin/" method="post">
+
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" class="id" name="id" value="{{ post.user_id }}">
+                            <select class="sele sele{{loop.index}}" name="select" id="" onclick="
+                                var se = $('.sele{{loop.index}}').val()
+                                 if (se == 'Inactive'){
+                                    var val = $('.sele').val()
+                                    $('.byb{{loop.index}}').removeClass('btn-success')
+                                    $('.byb{{loop.index}}').removeClass('btn-danger')
+                                    $('.byb{{loop.index}}').addClass('btn-warning')
+                                    $('.byb{{loop.index}}').text('Freeze')
+                                    
+                                }else if (se == 'Active'){
+                                    var val = $('.sele').val()
+                                    $('.byb{{loop.index}}').text('Activate')
+                                    
+                                }else{
+                                    var val = $('.sele').val()
+                                    $('.byb{{loop.index}}').removeClass('btn-warning')
+                                    $('.byb{{loop.index}}').removeClass('btn-danger')
+                                    $('.byb{{loop.index}}').addClass('btn-success')
+                                    $('.byb{{loop.index}}').text('Action')
+                                    
+                                }
+                            
+                                 
+                            ">
+                                <option value="selecet">Select an action</option>
+                                {% if post.user_status == "Active" %}
+                                    <option value="Inactive">Freeze</option>
+                                {% else %}
+                                    <option value="Active">Activate</option>
+                                {% endif %}
+                            </select>
+                            <button class="btn btn-success byb{{loop.index}} " type="submit">Action</button>
+                        </form>
+                    </td>
+                    <td><a class="btn btn-warning" href="/user/{{post.user_id}}/profile/">View</a></td>
+                    
+                  </tr>
+                {% endfor %}
+              </table>
+              <div class="row rad" >
+                <div class="col-md-12 rec2">
+                    <h1>Properties Table </h1>
+                </div>
+            </div>
+            <table class="table table-striped table-hover mb-5 mt-5 lkll">
+                <tr class="lkll">
+                  <th>ID</th>
+                  <th>Property_type</th>
+                  <th>State</th>
+                  <th>Property_title</th>
+                  <th>Property_description and Location</th>
+                  <th>View</th>
+                  
+                </tr>
+
+                {% for post in prop %}
+                  <tr>
+                    <td>{{post.property_id}}</td>
+                    <td>{{typ[loop.index].property_name}}</td> 
+                    <td>{{set[loop.index].state_name}}</td> 
+                    <td>{{post.title}}</td>
+                    <td>{{post.description}}</td>
+                    <td><a class="btn btn-warning" href="/info/{{post.property_id}}/{{post.user_id}}/">View</a></td> 
+                   
+                    
+                    
+                    
+                    
+                  </tr>
+                {% endfor %}
+
+                
+              </table>
+        </div>
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+    <script src="/static/jquery-3.7.1.min.js"></script>
+</body>
+</html>

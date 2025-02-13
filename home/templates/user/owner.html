@@ -1,0 +1,227 @@
+{% extends "user/layout.html" %}
+
+{% block title%} - Owner {% endblock %} 
+{% block listed %} {% endblock %}
+
+{% block partners %} {% endblock %}
+
+{% block say %} {% endblock %}
+
+{% block carousel %} {% endblock %}
+        {% block owner%}
+        <div class="row p-0">
+            <div class="col-md-8 over" > 
+                <div class="col-md-12 pic1">
+                    <img class="pica" src="/static/uploads/{{user.user_picture}}" alt="">
+                </div>
+                <div class="col-md-12 pic2">
+                    <!-- <div class="imm"><img class="ima" src="/static/pictures/hero.jpeg" alt=""></div> -->
+                    <div class="des">
+                      <h4 class="lt flna">{{user.user_firstname}} {{user.user_lastname}}</h4>
+                      
+                    </div>
+                    
+                   
+                </div>
+            </div>
+            <div class="col-md-4 roll p-3" style=" height: inherit;">
+                <form action="" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="text" name="name" class="form-control mb-2 mt-3" placeholder="Name"> 
+                    <input type="email" name="email" class="form-control mb-2" placeholder="Email"> 
+                    <input type="number" name="num" class="form-control mb-2" placeholder="Number"> 
+                    <!-- <textarea name="" id="" cols="25" rows="10" class="form-control mb-2" ></textarea> -->
+                    <input type="text" name="text" class="form-control mb-2 nsn">
+                    <button class="btn rele col-12">Send Your Message</button>
+                </form>
+            
+            </div>
+        </div>
+
+        <div class="row rad" >
+            <div class="col-md-12 rec">
+                <h1> Posted </h1>
+            </div>
+        </div>
+
+        <div class="row mid p-3 ">
+
+            {% for l in li %}
+            <div class="col-md-4 lis colat">
+                <div class="card l5 " style="width: 100%;">
+                    <img src="/static/uploads/{{l.property_cover_picture}}" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                      <p>{{ l.title }}</p>
+                      <h5 class="card-title"><a href="" class="non">{{ l.description }}</a> </h5>
+                      <div class="bodi">
+                        <div class="sid">
+                           <span> 5 </span><i class="fa-solid fa-bed"></i> 
+                        </div>
+                        <div class="sid">
+                            <span> 3 </span><i class="fa-solid fa-toilet"></i>
+                        </div>
+                        <div class="sed">
+                            <span> 2 </span><i class="fa-solid fa-car"></i>
+                        </div>
+                        
+                      </div>
+                      <p>Price: <strong>&#8358;{{ l.property_price }}</strong></p>
+                      <div class="cal">
+                        <button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button>
+                             
+                     </div>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+
+
+            <!-- <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%; ">
+                    <img src="/static/pictures/gal-11.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="listed_homes_info.html" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                               <span> 2 </span><i class="fa-solid fa-bed"></i> 
+                            </div>
+                            <div class="sid">
+                               <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                            </div>
+                            <div class="sed">
+                               <span> 1 </span><i class="fa-solid fa-car"></i> 
+                            </div>
+                        </div>
+                        <p>Price: <strong>&#8358;300,000</strong></p>
+                        <div class="cal">
+                            <button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button>
+                             
+ 
+                         </div>
+                      </div>
+                  </div>
+            </div>
+
+            <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%; ">
+                    <img src="/static/pictures/gal-9.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="listed_homes_info.html" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                                <span> 2 </span><i class="fa-solid fa-bed"></i> 
+                             </div>
+                             <div class="sid">
+                                <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                             </div>
+                             <div class="sed">
+                                <span> 1 </span><i class="fa-solid fa-car"></i> 
+                             </div>
+                        </div>
+                        <p>Price: <strong>&#8358;300,000</strong></p>
+                        <div class="cal">
+                            <button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button>
+                             
+ 
+                         </div>
+                      </div>
+                  </div>
+            </div> -->
+
+
+            
+        </div> 
+
+        <!-- <div class="row mid p-3">
+            <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%;">
+                    <img src="/static/pictures/house-1.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="listed_homes_info.html" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                                <span> 2 </span><i class="fa-solid fa-bed"></i> 
+                             </div>
+                             <div class="sid">
+                                <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                             </div>
+                             <div class="sed">
+                                <span> 1 </span><i class="fa-solid fa-car"></i> 
+                             </div>
+                        </div>
+                        <p>Price: <strong>&#8358;300,000</strong></p>
+                        <div class="cal">
+                            <button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button>
+                             
+ 
+                         </div>
+                      </div>
+                  </div>
+            </div>
+
+
+            <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%;">
+                    <img src="/static/pictures/gal-13.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="listed_homes_info.html" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                                <span> 2 </span><i class="fa-solid fa-bed"></i> 
+                             </div>
+                             <div class="sid">
+                                <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                             </div>
+                             <div class="sed">
+                                <span> 1 </span><i class="fa-solid fa-car"></i> 
+                             </div>
+                        </div>
+                        <p>Price: <strong>&#8358;300,000</strong></p>
+                        <div class="cal">
+                            <button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button>
+                             
+ 
+                         </div>
+                      </div>
+                  </div>
+            </div>
+
+            <div class="col-md-4 lis">
+                <div class="card l5" style="width: 100%;">
+                    <img src="/static/pictures/gal-12.jpeg" class="card-img-top im" alt="...">
+                    <div class="card-body ">
+                        <p>Fully Detached Duplex</p>
+                        <h5 class="card-title"><a href="listed_homes_info.html" class="non">4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI</a> </h5>
+                        <div class="bodi">
+                            <div class="sid">
+                                <span > 2 </span><i class="fa-solid fa-bed"></i> 
+                             </div>
+                             <div class="sid">
+                                <span> 3 </span><i class="fa-solid fa-toilet"></i> 
+                             </div>
+                             <div class="sed">
+                                <span> 1 </span><i class="fa-solid fa-car"></i> 
+                             </div>
+                        </div>
+                        <p>Price: <strong>&#8358;300,000</strong></p>
+                        <div class="cal">
+                           <button class="btn col-md-12 realt med"><i class="fa-solid fa-phone me-2"></i> Contact Realtor</button>
+                              
+                        </div>
+                        
+                      </div>
+                  </div>
+            </div>
+
+
+            
+        </div> -->
+        {% endblock%}
+       
+
+
+        

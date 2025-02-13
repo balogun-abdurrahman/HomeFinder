@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeFinder - admin_user</title>
+    <link rel="stylesheet" href="/static/fa/css/all.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/animate.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .sdbr{
+            height: 100%;
+            width: 6%;
+            background-color: #101d2c;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            transition: all 0.4s ease;
+            overflow-x: hidden;
+        }
+        .tabil{
+            margin-left: 6%;
+            width: 90% !important;
+        }
+        .sdbr:hover{
+            width: 20%;
+            background-color: rgba(3, 3, 32, 0.9);
+        }
+        .topee{
+            display: flex;
+            width: 270px;
+            height: 60px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .topee:hover{
+            background-color: #101d2c;
+        }
+        .oli{
+            /* margin-top: 5px;
+            margin-left: 10px; */
+            height: 40px;
+            width: 40px;
+            padding: 10px;
+            margin-left: 12px;
+            margin-top: 1px;
+            background-color: #c69963;
+        }
+        .vk{
+            color: #c69963;
+            margin-left: 15px;
+        }
+        /* div{
+            border: 1px solid red;
+        } */
+        .under{
+            /* border: 1px solid forestgreen; */
+            height: 80vh;
+        }
+        .colol{
+            color: white;
+        }
+        .bv{
+            border-bottom: 5px solid #c69963;
+        }
+        .fob{
+            width: 260px;
+            border-bottom: 5px solid #54421f;
+        }
+        /* .lo{
+            width: 50px !important;
+        } */
+    </style>
+</head>
+<body class="body">
+    <div class="container-fluid">
+        <div class="row sdbr">
+            <div class="col ">
+                <div class="fob">
+                    <div class="topee bv mt-3 ">
+                        <i class="fa-solid fa-house mb-2 me-1 lo oli"></i>
+                        <h2 class="vk  text-center">HomeFinder</h2>
+                    </div>
+                </div>
+                <div class="topee mt-5">
+                    <i class="fa-solid fa-house mb-2 me-1 lo oli"></i>
+                    <h2 class="vk colol text-center"><a href="/admin/">Dashboard</a></h2>
+                </div>
+            <div class="col topee mt-3">
+                <i class="fa-solid fa-user did lo oli"></i>
+                <h2 class="vk colol text-center">User Profile</h2>
+            </div>
+            <!-- <div class="col topee mt-3">
+                <i class="fa-solid fa-house  mb-2 me-1 lo oli"></i>
+                <h2 class="vk colol text-center">Listings</h2>
+            </div> -->
+            </div>
+            
+            
+        </div>
+        <div class="row tabil p-0">
+            <div class="col-md-8 over" > 
+                <div class="col-md-12 pic1">
+                    <img class="pica" src="/static/uploads/{{user.user_picture}}" alt="">
+                </div>
+                <div class="col-md-12 pic2">
+                    <!-- <div class="imm"><img class="ima" src="/static/pictures/hero.jpeg" alt=""></div> -->
+                    <div class="des">
+                        <div class="flxstart">
+                            <h3 class="lt flna">{{ user.user_firstname }} {{ user.user_lastname }}</h3>
+                            
+                        </div>
+
+                      <div class="bd">
+                        <button class="btn relati col-md-4 mb-3 mt-1 me-1" > <a class="" href="/owner/{{id[0]}}/{{user.user_id}}/">View User</a></button> 
+                    </div>  
+                      
+                    </div>
+                    
+                   
+                </div>
+            </div>
+            <div class="col-md-4 \ roll p-3" style=" height: inherit;">
+               <div class="border border-white nup">
+                <h3 class="pt-5 ps-3">Number of property listed</h3>
+
+                <h2 class="text-center pt-2 nuup">{{lenn}}</h2>
+
+               </div>
+            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 ms-5 mm5 roll p-3" style=" height: inherit;">
+                <div class="propf" >
+                    <div class="mas"><h2>Profile Info</h2>   </div>
+               
+                    <div class="fflo">
+                    <div class="  usef pt-3 px-4 pb-2">
+                        <strong>First Name : </strong>
+                        <p>{{ user.user_firstname }}</p>
+                        <strong>Last Name : </strong>
+                        <p>{{ user.user_lastname }}</p>
+                        <strong>Phone Number : </strong>
+                        <p>{{ user.user_number }}</p>
+                        <strong>Email : </strong>
+                        <p>{{ user.user_email }}</p>
+                    </div>
+                </div>
+         
+        
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+    <script src="/static/jquery-3.7.1.min.js"></script>
+</body>
+</html>

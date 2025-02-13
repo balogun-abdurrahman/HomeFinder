@@ -1,0 +1,133 @@
+{% extends "user/layout.html" %}
+
+{% block title%} - Edit_post {% endblock %} 
+{% block listed %} {% endblock %}
+
+{% block partners %} {% endblock %}
+
+{% block say %} {% endblock %}
+
+{% block carousel %} {% endblock %}
+
+{% block sale %}
+<div class="mt-5">
+    <h2 class="text-center">Edit Your Post Here</h2>
+</div>  
+{% set message = get_flashed_messages(with_categories=True) %}
+{% if message %}
+{% for msg,cat in message %}
+    {% if cat == "errormsg" %}
+    <div class="alert alert-danger alat">{{ msg }}</div>
+    {% else%}
+    <div class="alert alert-success alat">{{ msg }}</div>
+    {% endif %}
+{% endfor %}
+{% endif %}  
+<form action="#" method="post" class="mt-5 mb-5" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label for="" class="mb-1"> <strong>Select Property Category</strong> </label>
+    <select name="cat" class="form-select mb-3" id="">
+
+        <option value="{{idt.property_category}}">{{idt.property_category}}</option>
+        
+        {% if idt.property_category != "rent"  %} <option value="rent">Rent</option> {% endif %}
+        {% if idt.property_category != "buy"  %} <option value="buy">Buy</option> {% endif %}
+        {% if idt.property_category != "shortlet"  %} <option value="shortlet">Shortlet</option> {% endif %}
+        
+        
+        
+
+    </select>
+    <label for="" class="mb-1"> <strong>Select Property Type</strong> </label>
+    <select name="type" class="form-select mb-3" id="">
+        <option value="{{tya.property_name}}"> {{tya.property_name}} </option>
+        {% for p in prop %}
+            {% if p.property_name != tya.property_name %}
+                <option value="{{p.property_name}}">{{p.property_name}}</option>
+            {% endif %}
+            
+        {% endfor %}
+    </select>
+
+    <label for="" class="mb-1"> <strong>Select Property State</strong> </label>
+    <!-- <select name="state" class="form-select mb-3" id="">
+        <option value="property state">Propert State</option>
+        {% for s in state %}
+            <option value="{{s.state_name}}">{{s.state_name}}</option>
+        {% endfor %}
+    </select> -->
+
+    <select name="state" class="form-select mb-3" id="" >
+        <option value="{{sta.state_name}}"> {{sta.state_name}} </option>
+        {% for s in state %}
+
+        {% if s.state_name != sta.state_name %}
+            <option value="{{s.state_name}}">{{ s.state_name }} </option>
+        {% endif %}
+           
+        {% endfor %}
+    </select>
+
+
+    <label for="" class="mb-1"> <strong>Property Title</strong> </label>
+    <input type="text" class="form-control mb-3" value="{{idt.title}}"  name="title" placeholder="Eg: 4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI">
+
+    <label for="" class="mb-1"> <strong>Property Description and Location</strong> </label>
+    <textarea name="desc" class="form-control mb-3" id=""  rows="2">{{idt.description}}</textarea>
+
+    <label for="" class="mb-1"> <strong>Property Amenities</strong> </label>
+    <textarea name="amen" class="form-control mb-3" id=""  rows="2">{{idt.property_amenities}}</textarea>
+    <div class="ref col-md-12">
+        <div class="col-md-4">
+            <label for="" class="lbl"> <strong>How Many Bedroom</strong> </label>
+            <select class="form-select for fir " name="bed" id="">
+                <option value="{{idt.bedroom_number}}"> {{idt.bedroom_number}} </option>
+                {% if idt.bedroom_number != 1  %} <option value="1">1</option> {% endif %}
+                {% if idt.bedroom_number != 2  %} <option value="2">2</option> {% endif %}
+                {% if idt.bedroom_number != 3  %} <option value="3">3</option> {% endif %}
+                {% if idt.bedroom_number != 4  %} <option value="4">4</option> {% endif %}
+                {% if idt.bedroom_number != 5  %} <option value="5">5</option> {% endif %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="" class="lbl"> <strong>How Many Bathroomm/Toilet</strong> </label>
+            <select class="form-select tty " name="bat" id="">
+            <option value="{{idt.bathroom_number}}"> {{idt.bathroom_number}} </option>
+
+            {% if idt.bathroom_number != 1  %} <option value="1">1</option> {% endif %}
+            {% if idt.bathroom_number != 2  %} <option value="2">2</option> {% endif %}
+            {% if idt.bathroom_number != 3  %} <option value="3">3</option> {% endif %}
+            {% if idt.bathroom_number != 4  %} <option value="4">4</option> {% endif %}
+            {% if idt.bathroom_number != 5  %} <option value="5">5</option> {% endif %}
+        </select>
+        </div>
+        <div class="col-md-4">
+            <label for="" class="lbl"> <strong>How Many Parking space</strong> </label>
+            <select class="form-select for fari" name="park" id="">
+            <option value="{{idt.parking_space}}"> {{idt.parking_space}} </option>
+            {% if idt.parking_space != 1  %} <option value="1">1</option> {% endif %}
+            {% if idt.parking_space != 2  %} <option value="2">2</option> {% endif %}
+            {% if idt.parking_space != 3  %} <option value="3">3</option> {% endif %}
+            {% if idt.parking_space != 4  %} <option value="4">4</option> {% endif %}
+            {% if idt.parking_space != 5  %} <option value="5">5</option> {% endif %}
+        </select>
+        </div>
+        
+    </div>
+    <label for="" class="mb-1">  <strong>Property Price</strong> </label>
+    <input type="number" class="form-control mb-3" value="{{idt.property_price}}" name="price" id="" placeholder="property price">
+    <div class="mb-3">
+        <label for="image" class="form-label"><strong>home Image</strong></label>
+        <input type="file" name="image" value="{{idt.property_cover_picture}}" class="form-control" id="image" aria-label="file example">
+      </div>
+
+
+      <button class="btn real col-md-12">Submit</button>
+
+    
+  </form>
+{% endblock %}
+
+
+ 

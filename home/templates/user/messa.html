@@ -1,0 +1,115 @@
+{% extends "user/layout.html" %}
+
+{% block title%} - Edit_post {% endblock %} 
+{% block listed %} {% endblock %}
+
+{% block partners %} {% endblock %}
+
+{% block say %} {% endblock %}
+
+{% block carousel %} {% endblock %}
+
+{% block sale %} 
+
+
+{% set message = get_flashed_messages(with_categories=True) %}
+{% if message %}
+{% for msg,cat in message %}
+    {% if cat == "errormsg" %}
+    <div class="alert alert-danger alat">{{ msg }}</div>
+    {% else%}
+    <div class="alert alert-success alat">{{ msg }}</div>
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+<div class="mt-4 bbooy ">
+    <div class="container-fluid lok">
+        
+        <section class="chat-section vaf">
+            <div class=" d-flex bord">
+                <a href="/profile/{{ids}}/" class="nonq"><i class="fa fa-arrow-left cfc" aria-hidden="true"></i></a>
+                <div class="cmes me-1 ms-3 mb-2 ps-2">
+                    <img class="pmes border border-white" src="/static/uploads/{{use.user_picture}}" alt=""> 
+                </div>
+                    <div class="k align-center">
+                        <h3 class="pt-3">{{use.user_firstname}} {{use.user_lastname}}</h3>
+                    </div>
+                    
+            </div>
+            <div id="chatBox" class="qwew">
+                <ul id="chatMessages" class="mnb">
+                    {% for m in mes %}
+                        
+                        <!-- <li >{{m.message_content}}</li> -->
+                        {% if m.sender_id == id[0] %}
+                            <div class="d-flex qws">
+                                <!-- <div class="cmes me-1  mb-2 ps-2 ">
+                                    <img class="pmes border border-white" src="/static/uploads/{{use.user_picture}}" alt=""> 
+                                </div> -->
+                                    <div class="k align-center me-3 ms-3">
+                                        <li class="elio iled">{{m.message_content}}</li>
+                                    </div>
+                                    
+                            </div>
+                        {% else %}
+                        <div class="d-flex qwzs">
+                            <!-- <div class="cmes me-1 mb-2 ps-2">
+                                <img class="pmes border border-white" src="/static/uploads/{{se[0]}}" alt=""> 
+                            </div> -->
+                                <div class="k align-center me-3 ms-3 ">
+                                    <li class="elio ledi">{{m.message_content}}</li>
+                                </div>
+                                
+                        </div>
+                        {% endif %}
+             
+                  
+
+                    {% endfor %}
+
+                    
+                </ul>
+
+
+                
+
+            </div>
+            <div class="col-md-12">
+                <form action="" method="post" class="flax">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="text" name="mesor" value="" class="form-control" id="messageInput" placeholder="Type a message...">
+                    <button class="send" type="submit">Send</button>
+                </form>
+            </div>
+
+            
+
+        </section>
+    </div>
+
+
+  
+</div>
+
+
+
+<script src="/static/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        function media(){
+            if($(window).width() <= 768){
+                $(".laba").hide()
+                $(".nonq").show()
+            }
+        }
+        $(document).ready(media)
+        $(window).resize(media)
+
+    })
+</script>
+{% endblock %}
+
+
+ 

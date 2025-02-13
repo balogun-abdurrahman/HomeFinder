@@ -1,0 +1,148 @@
+{% extends "user/layout.html" %}
+
+{% block title%} - upload {% endblock %} 
+{% block listed %} {% endblock %}
+
+{% block partners %} {% endblock %}
+
+{% block say %} {% endblock %}
+
+{% block carousel %} {% endblock %}
+
+
+
+{% block sale %} 
+
+<div class="mt-5">
+    <h2 class="text-center">Tell Us more about Your Property</h2>
+</div>  
+
+
+{% set message = get_flashed_messages(with_categories=True) %}
+{% if message %}
+{% for msg,cat in message %}
+    {% if cat == "errormsg" %}
+    <div class="alert alert-danger alat">{{ msg }}</div>
+    {% else%}
+    <div class="alert alert-success alat">{{ msg }}</div>
+    {% endif %}
+{% endfor %}
+{% endif %} 
+<form action="#" method="post" class="mt-5 mb-5" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label for="" class="mb-1"> <strong>Select Property Category</strong> </label>
+    <select name="cat" class="form-select mb-3" id="">
+        <option value="property category">Property Category</option>
+        <option value="rent">Rent</option>
+        <option value="buy">Buy</option>
+        <option value="shortlet">Shortlet</option>
+    </select>
+
+    <label for="" class="mb-1"> <strong>Select Property Type</strong> </label>
+    <select name="type" class="form-select mb-3" id="">
+        <option value="property type">Property Type</option>
+        {% for p in prop %}
+            <option value="{{p.property_name}}">{{p.property_name}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="" class="mb-1"> <strong>Select Propert State</strong> </label>
+    <select name="state" class="form-select mb-3" id="">
+        <option value="property state">Propert State</option>
+        {% for s in state %}
+            <option value="{{s.state_name}}">{{s.state_name}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="" class="mb-1"> <strong>Property Title</strong> </label>
+    <input type="text" class="form-control mb-3"  name="title" placeholder="Eg: 4 BEDROOM FULLY DETACHED DUPLEX, IKOTA LEKKI">
+
+    <label for="" class="mb-1"> <strong>Property Description and Location</strong> </label>
+    <textarea name="desc" class="form-control mb-3" id=""  rows="2"></textarea>
+
+    <label for="" class="mb-1"> <strong>Property Amenities</strong> </label>
+    <textarea name="amen" class="form-control mb-3" id=""  rows="2"></textarea>
+
+    <div class="ref col-md-12">
+        <div class="col-md-4">
+            <label for="" class="lbl"> <strong>How Many Bedroom</strong> </label>
+            <select class="form-select for fir " name="bed" id="">
+                <option value="bed many">How Many Bedroomm</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="" class="lbl"> <strong>How Many Bathroomm/Toilet</strong> </label>
+            <select class="form-select tty " name="bat" id="">
+            <option value="bat many">How Many Bathroomm/Toilet</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        </div>
+        <div class="col-md-4">
+            <label for="" class="lbl"> <strong>How Many Parking space</strong> </label>
+            <select class="form-select for fari" name="park" id="">
+            <option value="park many">How Many Parking space</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        </div>
+        
+    </div>
+
+
+<div class="bombom mb-3 ps-3 pe-3 mt-3 pt-3">
+    <div class="mb-3">
+        <label for="image" class="form-label"><strong>Images of the property : </strong> eg: bedroom, sitting room, and front view</label>
+        <input type="file" name="im1" class="form-control" id="im1" aria-label="file example">
+      </div>
+    <div class="mb-3">
+        <input type="file" name="im2" class="form-control" id="im2" aria-label="file example">
+      </div>
+    <div class="mb-3">
+        <input type="file" name="im3" class="form-control" id="im3" aria-label="file example">
+      </div>
+    <div class="mb-3">
+        <input type="file" name="im4" class="form-control" id="im4" aria-label="file example">
+      </div>
+    <div class="mb-3">
+        <input type="file" name="im5" class="form-control" id="im5" aria-label="file example">
+      </div>
+</div>
+
+
+
+    
+
+
+
+
+    <label for="" class="mb-1"> <strong>Property Price</strong> </label>
+    <input type="number" class="form-control mb-3" name="price" id="" placeholder="Property Price">
+
+
+    <div class="mb-3">
+        <label for="image" class="form-label"><strong>Cover Image</strong></label>
+        <input type="file" name="image" class="form-control" id="image" aria-label="file example">
+      </div>
+
+
+      <button class="btn real col-md-12">Submit</button>
+
+    
+  </form>
+{% endblock %}
+
+
+ 
